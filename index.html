@@ -9,10 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
- 
     body {
       margin: 0;
-      background-image: url("logo.png");
+      background-image: url("background.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -21,12 +20,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      font-family: 'Sour Gummy', system-ui; 
-      box-sizing: border-box;
-    }
-
-    *, *::before, *::after { 
-        box-sizing: border-box;
+      font-family: 'Sour Gummy', system-ui;
     }
 
     #startPage {
@@ -35,7 +29,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-image: url("logo.png");
+      background-image: url("/Users/mac/Downloads/My Game Projects/HTMLCSSJS/pixu/background.png");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -72,193 +66,174 @@
       to { opacity: 1; }
     }
 
+    @media (max-width: 768px) {
+      .logo {
+        width: 150px;
+      }
+      .slogan {
+        font-size: 1.5rem;
+      }
+    }
+
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000; 
+      z-index: 1000;
       background: linear-gradient(90deg, #fff8fc, #fff8fc);
-      color: white; 
+      color: white;
       display: flex;
-      justify-content: space-around; 
+      justify-content: space-around;
       align-items: center;
+      gap: 50px;
       height: 60px;
-      padding: 0 1rem; 
       border-bottom: 2px solid #fff8fc;
     }
 
-    nav > * { 
-        margin: 0 0.5rem;
-    }
-
-    .nav-logo-img {
-        height: 40px; 
-        width: auto;
-    }
-
     .container {
-      max-width: 600px; 
-      margin: 0 auto; 
-      padding: calc(60px + 2rem) 1rem 2rem 1rem; 
-      flex: 1; 
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem 1rem;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 100%;
     }
 
-    
-    .post-creator, .auth, .feed, .friends-list {
-      background: #fff8fc; 
-      color: #333; 
+    .post-creator {
+      background: #fff;
       padding: 1.5rem;
-      border-radius: 25px; 
+      border-radius: 50px;
+      margin-top: 50px;
       margin-bottom: 1.5rem;
       transition: transform 0.2s ease;
       text-align: center;
     }
-    
-    .post-creator {
-        margin-top: 1.5rem; 
+
+    .auth, .feed, .friends-list {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease;
+      text-align: center;
     }
 
-    .post-creator:hover, .auth:hover, .friends-list:hover {
-      transform: scale(1.01); 
+    input#friend-username {
+      text-align: center; 
+    }
 
-    
+    .post-creator:hover {
+      transform: scale(1.01);
+    }
+
+    .auth:hover, .friends-list:hover {
+      transform: scale(1.01);
+    }
+
     .auth-logo {
-      width: 250px; 
-      max-width: 100%; 
+      width: 300px;
       height: auto;
-      margin: 0 auto 1rem; 
-      margin-bottom: -4rem; 
-      margin-top: -4rem;   
+      margin: 0 auto 1rem;
+      margin-bottom: -5rem;
+      margin-top: -5rem;
       display: block;
       object-fit: contain;
-      background: transparent; 
+      background: transparent;
       animation: fadeIn 0.6s ease;
     }
 
-    
     input, textarea {
       width: 100%;
       padding: 0.75rem;
-      margin: 0.75rem 0; 
+      margin: 0.75rem -0.80rem;
       border: 2px solid #ffe3e3; 
-      border-radius: 20px; 
+      border-radius: 50px;
       background-color: #fffafc;
       font-size: 1rem;
-      color: #555; 
+      color: thistle;
       font-family: 'Sour Gummy', system-ui;
       transition: border-color 0.3s ease;
     }
 
     textarea#postContent {
       text-align: center;
-      min-height: 80px; 
-    }
-    
-    input#friend-username {
-        text-align: center;
     }
 
     input::placeholder, textarea::placeholder {
-      color: #aaa; 
+      color: #efb6c8;
       opacity: 1;
     }
-     textarea#postContent::placeholder { 
-      text-align: center;
-    }
-
 
     input:focus, textarea:focus {
       border-color: #f7cfd8;
       outline: none;
     }
 
-   
     #friendsPanel {
+      width: 30%;
       max-width: 300px;
       position: absolute; 
-      top: 80px;       
-      left: 50%;        
-      transform: translateX(-50%); 
+      top: 200px;       
+      left: 42%;        
+      transform: translateX(-50px);
       background-color: #fff8fc;
-      padding: 1.5rem;
-      border-radius: 25px;
+      padding: 50px;
+      border-radius: 50px;
+      box-sizing: border-box;
     }
 
     #friendsPanel input {
-      width: 100%;
+      width: 95%;
       padding: 10px;
-      margin: 10px 0;
-      border-radius: 20px;
+      margin: 10px 10px 10px 10px;
+      border-radius: 50px;
       border: 1px solid pink;
-    }
-    #friendsPanel h3 {
-        color: #cb80ab; 
-        margin-top: 0;
+      box-sizing: border-box;
     }
 
     button {
       padding: 0.6rem 1.2rem;
       background-color: #f7cfd8;
+      justify-content: center;
       color: white;
       font-family: 'Sour Gummy', system-ui;
       font-size: 1rem;
       font-weight: bold;
       border: none;
-      border-radius: 20px; 
+      border-radius: 50px;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s ease;
       display: block; 
       margin: 1rem auto 0; 
       text-align: center; 
     }
-    button:hover {
-        background-color: #efb6c8;
-        transform: scale(1.05);
-    }
 
     .auth p {
       text-align: center;
-      color: #555; 
-      font-size: 0.9rem;
-    }
-    .auth a {
-      color: #efb6c8; 
-      font-weight: bold;
-    }
-    .auth a:hover {
-        text-decoration: underline;
     }
 
-
-   
-    .home-btn, .friends-btn, .logout-btn {
+    .home-btn {
       margin: 0;
-      padding: 10px; 
+      padding: 10px 20px;
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 40px;
       color: thistle;
-    }
-    .home-btn:hover, .friends-btn:hover, .logout-btn:hover {
-      color: #eecad5;
     }
 
     .upload-btn {
       display: inline-block;
       background-color: #fbd6e0;
-      color: white; 
+      color: #fff9bf;
       border-radius: 20px;
       padding: 8px 16px;
       margin: 10px 0;
       cursor: pointer;
       font-family: 'Sour Gummy', system-ui;
-      font-size: 0.9rem; 
+      font-size: 14px;
       border: 2px dashed thistle;
       transition: background-color 0.3s ease;
     }
@@ -267,30 +242,82 @@
       background-color: #ffe6ee;
     }
 
-   
-    textarea#postContent:focus::placeholder,
-    input#friend-username:focus::placeholder {
-      opacity: 0; 
+    .friends-btn {
+      margin: 0;
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 40px;
+      color: thistle;
     }
-     input#friend-username:focus::placeholder {
+
+    .logout-btn {
+      margin: 0;
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 40px;
+      color: thistle;
+    }
+
+    .auth, .feed, .post-creator, .friends-list {
+      background: #fff8fc;
+    }
+
+    textarea#postContent::placeholder {
+      color: #efb6c8;
+      opacity: 1;
       text-align: center;
     }
 
-    .delete-btn, .like-btn, .add-friend-btn, .comment-btn {
+    textarea#postContent:focus::placeholder {
+      opacity: 0;
+    }
+
+    input#friend-username::placeholder {
+      color: #efb6c8;
+      opacity: 1;
+    }
+
+    input#friend-username:focus::placeholder {
+      opacity: 0;
+      text-align: center;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #efb6c8;
+      cursor: pointer;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .like-btn, .add-friend-btn, .comment-btn {
       background: none;
       border: none;
       color: #efb6c8;
       cursor: pointer;
       margin-right: 5px;
       font-weight: bold;
-      padding: 0.5rem; 
-    }
-    .like-btn i, .comment-btn i, .delete-btn i { 
-        font-size: 1.2rem;
     }
 
-    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover, .delete-btn:hover {
+    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover {
       color: #cb80ab;
+    }
+
+    .home-btn:hover {
+      color: #eecad5;
+    }
+
+    .friends-btn:hover {
+      color: #eecad5;
+    }
+
+    .logout-btn:hover {
+      color: #eecad5;
     }
 
     .friend {
@@ -300,565 +327,433 @@
       margin-bottom: 0.5rem;
       padding: 0.5rem;
       border-bottom: 1px dashed #ffc0cb;
-      color: #555; 
     }
 
     a {
-      color: #d185a3; 
+      color: #c6e7ff;
       text-decoration: none;
       font-weight: bold;
     }
+
     a:hover {
       text-decoration: underline;
     }
 
     .hidden {
-      display: none !important;
-    }
-
-    .post img { 
-        max-width: 100%; 
-        height: auto;    
-        border-radius: 15px; 
-        margin-top: 10px;
-    }
-    .post p {
-        color: #333; 
-        word-wrap: break-word;
-    }
-    .post strong {
-        color: #cb80ab;
-    }
-    .post span { 
-        color: #555;
-    }
-    
-    #comments-${'index'} p { 
-        font-size: 0.9em;
-        color: #444;
-        border-bottom: 1px dotted #eee;
-        padding: 0.3em 0;
-    }
-    #comments-${'index'} strong {
-        color: #ad7a90;
+      display: none;
     }
 
     @media (max-width: 768px) {
-      .logo { 
-        width: 150px;
-      }
-      .slogan 
-        font-size: 1.5rem;
-      }
-
       .container {
         max-width: 95%; 
-        padding: calc(60px + 1.5rem) 1rem 1.5rem 1rem; 
+        margin: 2rem auto;
+        padding: 1.5rem;
+      }
+
+      .auth {
+        padding: 1.2rem;
+        border-radius: 18px;
+        margin-bottom: 1.2rem;
       }
 
       .auth-logo {
-        width: 200px;
-        margin-top: -3rem; 
-        margin-bottom: -2rem; 
+        width: 250px;
+        margin-top: -4rem;
       }
 
       input, textarea {
         padding: 0.7rem;
-        border-radius: 18px;
+        margin: 0.7rem -0.7rem;
+        border-radius: 50px;
         font-size: 0.95rem;
       }
 
       button {
         font-size: 0.95rem;
-        border-radius: 18px;
+        border-radius: 50px;
         padding: 0.7rem 1.2rem;
       }
 
       .auth p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        margin-top: 0.6rem;
+        }
       }
 
-      .nav-logo-img { 
-          height: 35px;
-      }
-      .home-btn, .friends-btn, .logout-btn { 
-          font-size: 1.3rem;
+      @media (max-width: 480px) {
+        .auth-logo {
+          width: 180px; 
+          margin-bottom: -3rem;
+          margin-top: -3rem;
+        }
+
+        input, textarea {
+          font-size: 0.9rem;
+          border-radius: 50px;
+        } 
+
+        button {
+          font-size: 0.9rem;
+          border-radius: 50px;
+          padding: 0.6rem 1rem;
+        }
+
+        .auth p {
+          font-size: 0.85rem;
+        }
       }
 
+    @media (max-width: 600px) {
       #friendsPanel {
-        position: static; 
-        width: 100%;    
-        max-width: 100%; 
-        margin-top: 1rem;
-        transform: none; 
-        left: auto;     
-        top: auto;
-      }
-    
-    @media (max-width: 480px) {
-      .auth-logo {
-        width: 150px; 
-        margin-bottom: -1.5rem;
-        margin-top: -2rem;
+        width: 95%;
+        padding: 15px;
       }
 
-      input, textarea {
-        font-size: 0.9rem;
-        border-radius: 15px;
-        padding: 0.6rem;
-      } 
-
-      button {
-        font-size: 0.9rem;
-        border-radius: 15px;
-        padding: 0.6rem 1rem;
-      }
-
-      .auth p {
-        font-size: 0.8rem;
-      }
-      
-      nav { 
-        padding: 0 0.5rem; 
-      }
-      nav > * { 
-        margin: 0 0.2rem; 
-      }
-      .nav-logo-img { 
-          height: 30px;
-      }
-      .home-btn, .friends-btn, .logout-btn { 
-          font-size: 1.2rem; 
-          padding: 8px;
-      }
-
-      .post-creator, .auth, .feed, .friends-list {
-        border-radius: 20px; 
-        padding: 1rem;
-      }
-      #friendsPanel { 
-        padding: 1rem;
-        border-radius: 20px;
-      }
       #friendsPanel input {
-        border-radius: 15px;
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
   <div id="startPage">
-    <img src="logo.png" alt="Pixu Logo" class="logo" /> 
+    <img src="logo.png" alt="Pixu Logo" class="logo.png" />
     <div class="slogan">connects life, enjoy moment.</div>
   </div>
+    <div id="mainContent" class="hidden"></div>
 
-  <div id="mainContent" class="hidden">
-    <nav id="navbar" class="hidden">
-      <img src="logo.png" alt="Logo" class="nav-logo-img" /> 
-      <button class="home-btn" onclick="showFeed()">
-         <i class="fa-solid fa-house"></i>
-      </button>
-      <button onclick="showFriends()" class="friends-btn">
-        <i class="fa-solid fa-user-group"></i>
-      </button>
-      <button class="logout-btn" onclick="logout()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-      </button>
-    </nav>
+  <nav id="navbar" class="hidden">
+    <img src="logo.png" alt="Logo" style="height: 120px; width: auto; margin-top: 10px;" />
+    <button class="home-btn" onclick="showFeed()">
+       <i class="fa-solid fa-house"></i>
+    </button>
+    <button onclick="showFriends()" class="friends-btn">
+      <i class="fa-solid fa-user-group"></i>
+    </button>
+    <button class="logout-btn" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+  </nav>
 
-    <div id="friendsPanel" class="friends-list hidden">
-      <h3>friends</h3>
-      <div id="friendsList"></div>
-      <input type="text" id="friend-username" placeholder="username to add" />
-      <button onclick="addFriend()">add friend</button>
+  <nav id="main-nav" style="display: none;">...</nav>
+  <div id="login-page">...</div>
+
+  <div id="friendsPanel" class="friends-list hidden">
+    <h3>friends</h3>
+    <div id="friendsList"></div>
+    <input type="text" id="friend-username" placeholder="username to add" />
+    <button onclick="addFriend()">add friend</button>
+  </div>
+
+  <div class="container">
+    <div id="loginPage" class="auth">
+      <img src="logo.png" alt="Pixu Logo" class="auth-logo" />
+      <input type="text" id="login-username" placeholder="username" />
+      <input type="password" id="login-password" placeholder="password" />
+      <button onclick="login()">login</button>
+      <p>don't have an account? <a href="#" onclick="showSignup()">sign up</a></p>
     </div>
 
-    <div class="container">
-      <div id="loginPage" class="auth">
-        <img src="logo.png" alt="Pixu Logo" class="auth-logo" />
-        <input type="text" id="login-username" placeholder="username" />
-        <input type="password" id="login-password" placeholder="password" />
-        <button onclick="login()">login</button>
-        <p>don't have an account? <a href="#" onclick="showSignup()">sign up</a></p>
-      </div>
-
-      <div id="signupPage" class="auth hidden">
-        <img src="logo.png" alt="Pixu Logo" class="auth-logo" />
-        <input type="text" id="signup-username" placeholder="username" />
-        <input type="password" id="signup-password" placeholder="password" />
-        <button onclick="signup()">sign up</button>
-        <p>already have an account? <a href="#" onclick="showLogin()">login</a></p>
-      </div>
-
-      <div id="feedPage" class="hidden">
-        <div class="post-creator">
-          <textarea id="postContent" placeholder="what's on your mind?"></textarea>
-          <label for="imageUpload" class="upload-btn">upload an image</label>
-          <input type="file" id="imageUpload" accept="image/*" hidden>
-          <button onclick="createPost()">post</button>
-        </div>
-        <div id="feed" class="feed"></div> </div>
+    <div id="signupPage" class="auth hidden">
+      <img src="logo.png" alt="Pixu Logo" class="auth-logo" />
+      <input type="text" id="signup-username" placeholder="username" />
+      <input type="password" id="signup-password" placeholder="password" />
+      <button onclick="signup()">sign up</button>
+      <p>already have an account? <a href="#" onclick="showLogin()">login</a></p>
     </div>
-  </div> <audio id="signupSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="navigateSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="loginSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="logoutSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="homeSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="friendsSound" src="click-sound.wav" preload="auto"></audio>
-  <audio id="postSound" src="post-sound.wav" preload="auto"></audio>
-  <audio id="typingSound" src="typing-sound.wav" preload="auto"></audio>
 
+    <div id="feedPage" class="hidden">
+      <div class="post-creator">
+        <textarea id="postContent" placeholder="what's on your mind?"></textarea>
+        <label for="imageUpload" class="upload-btn">upload an image</label>
+        <input type="file" id="imageUpload" accept="image/*" hidden>
+        <button onclick="createPost()">post</button>
+      </div>
+    <div id="feed"></div>
+    </div>
+
+    <audio id="signupSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="navigateSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="loginSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="logoutSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="homeSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="friendsSound" src="click-sound.wav" preload="auto"></audio>
+    <audio id="postSound" src="post-sound.wav" preload="auto"></audio>
+    <audio id="typingSound" src="typing-sound.wav" preload="auto"></audio>
+
+
+  </div>
 
   <script>
-    // DOM Element References
-    const startPageDiv = document.getElementById("startPage");
-    const mainContentDiv = document.getElementById("mainContent");
     const loginPage = document.getElementById("loginPage");
     const signupPage = document.getElementById("signupPage");
     const feedPage = document.getElementById("feedPage");
     const navbar = document.getElementById("navbar");
     const friendsPanel = document.getElementById("friendsPanel");
     const friendsList = document.getElementById("friendsList");
-    const feedDiv = document.getElementById("feed"); 
-    const postContentTextarea = document.getElementById('postContent');
 
-    function playSound(soundId) {
-        const sound = document.getElementById(soundId);
-        if (sound) {
-            sound.currentTime = 0; 
-            sound.play().catch(err => console.warn(`Sound play error (${soundId}):`, err));
-        }
-    }
-    
+    window.onload = function () {
+      const user = localStorage.getItem("loggedInUser");
+      if (user) {
+        showFeed();
+      } else {
+        showLogin();
+      }
+    };
+
     document.querySelectorAll('input, textarea').forEach(element => {
       element.addEventListener('input', () => {
-        const sound = document.getElementById("typingSound");
+      const sound = document.getElementById("typingSound");
         if (sound) {
           const clone = sound.cloneNode();
-          clone.volume = 0.5; 
           clone.play().catch(err => console.warn("Typing sound error:", err));
         }
       });
     });
 
-    function showLogin() {
-      startPageDiv.style.display = 'none'; 
-      mainContentDiv.classList.remove("hidden");
 
+    function showLogin() {
       loginPage.classList.remove("hidden");
       signupPage.classList.add("hidden");
       feedPage.classList.add("hidden");
       navbar.classList.add("hidden");
       friendsPanel.classList.add("hidden");
-      playSound("navigateSound");
     }
 
     function showSignup() {
+      const sound = document.getElementById('navigateSound');
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(err => console.warn("Navigate sound error:", err));
+      }
+
       loginPage.classList.add("hidden");
       signupPage.classList.remove("hidden");
       feedPage.classList.add("hidden");
       navbar.classList.add("hidden");
       friendsPanel.classList.add("hidden");
-      playSound("navigateSound");
     }
 
     function showFeed() {
+      const sound = document.getElementById("homeSound");
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(err => console.warn("Home sound error:", err));
+      }
+
       loginPage.classList.add("hidden");
       signupPage.classList.add("hidden");
       feedPage.classList.remove("hidden");
       navbar.classList.remove("hidden");
-      friendsPanel.classList.add("hidden"); 
+      friendsPanel.classList.add("hidden");
       loadFeed();
-      playSound("homeSound");
-    }
-
-    function showFriends() {
-      loginPage.classList.add("hidden");
-      signupPage.classList.add("hidden");
-      feedPage.classList.add("hidden"); 
-      navbar.classList.remove("hidden");
-      friendsPanel.classList.remove("hidden");
       loadFriends();
-      playSound("friendsSound");
     }
 
     function signup() {
-      const username = document.getElementById("signup-username").value.trim();
+      const username = document.getElementById("signup-username").value;
       const password = document.getElementById("signup-password").value;
-
-      if (!username || !password) {
-        alert("Please fill all fields.");
-        return;
-      }
-      if (localStorage.getItem(username)) {
-        alert("User already exists!");
-        return;
-      }
-      
+      if (!username || !password) return alert("please fill all fields.");
+      if (localStorage.getItem(username)) return alert("user already exists!");
       localStorage.setItem(username, JSON.stringify({ password, friends: [] }));
-      playSound("signupSound");
-      alert("Account created! Please login.");
+
+      const sound = document.getElementById("signupSound");
+      if (sound) {
+        sound.play().catch(err => {
+          console.log("Signup sound error:", err);
+        });
+      }
+
+      alert("account created! please login.");
       showLogin();
     }
 
     function login() {
-      const username = document.getElementById("login-username").value.trim();
+      const username = document.getElementById("login-username").value;
       const password = document.getElementById("login-password").value;
-      const userDataString = localStorage.getItem(username);
-
-      if (!userDataString) {
-        alert("User not found!");
-        return;
-      }
-      const user = JSON.parse(userDataString);
-      if (user.password !== password) {
-        alert("Wrong password!");
-        return;
-      }
+      const userData = localStorage.getItem(username);
+      if (!userData) return alert("user not found!");
+      const user = JSON.parse(userData);
+      if (user.password !== password) return alert("wrong password!");
       localStorage.setItem("loggedInUser", username);
-      playSound("loginSound");
+
+      const sound = document.getElementById("loginSound");
+      if (sound) {
+        sound.play().catch(err => {
+          console.log("Login sound error:", err);
+        });
+      }
+
       showFeed();
     }
 
     function logout() {
+      const logoutSound = document.getElementById("logoutSound");
+      if (logoutSound) {
+        logoutSound.currentTime = 0;
+        logoutSound.play().catch(err => console.warn("Logout sound error:", err));
+      }
+
       localStorage.removeItem("loggedInUser");
-      playSound("logoutSound");
-      showLogin(); 
+      showLogin();
+      document.getElementById("friendsPanel").classList.add("hidden");
     }
 
     function addFriend() {
       const friendUsername = document.getElementById("friend-username").value.trim();
+      if (!friendUsername) return;
       const loggedInUser = localStorage.getItem("loggedInUser");
-
-      if (!friendUsername) {
-        alert("Please enter a username to add.");
-        return;
-      }
-      if (!loggedInUser) {
-          alert("You must be logged in to add friends.");
-          showLogin();
-          return;
-      }
-      if (friendUsername === loggedInUser) {
-          alert("You cannot add yourself as a friend.");
-          return;
-      }
-
-      const userDataString = localStorage.getItem(loggedInUser);
-      if (!userDataString) { 
-          alert("Error: Logged in user data not found.");
-          logout(); // Log out to reset state
-          return;
-      }
-      const userData = JSON.parse(userDataString);
-
-      if (!localStorage.getItem(friendUsername)) {
-        alert(`User "${friendUsername}" not found!`);
-        return;
-      }
-      if (userData.friends && userData.friends.includes(friendUsername)) {
-        alert(`You are already friends with ${friendUsername}!`);
-        return;
-      }
-
-      if (!userData.friends) userData.friends = [];
+      const userData = JSON.parse(localStorage.getItem(loggedInUser));
+      if (userData.friends.includes(friendUsername)) return alert("already friends!");
+      const friendData = localStorage.getItem(friendUsername);
+      if (!friendData) return alert("user not found!");
       userData.friends.push(friendUsername);
       localStorage.setItem(loggedInUser, JSON.stringify(userData));
-      
-      alert(`You are now friends with ${friendUsername}!`);
-      document.getElementById("friend-username").value = ""; 
-      loadFriends(); 
-      playSound("navigateSound"); 
+      alert(`you are now friends with ${friendUsername}!`);
+      loadFriends();
+    }
+
+    function showFriends() {
+      const sound = document.getElementById("friendsSound");
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(err => console.warn("Friends sound error:", err));
+      }
+
+      document.getElementById("loginPage").classList.add("hidden");
+      document.getElementById("signupPage").classList.add("hidden");
+      document.getElementById("feedPage").classList.add("hidden");
+      document.getElementById("friendsPanel").classList.remove("hidden");
+      document.getElementById("navbar").classList.remove("hidden");
+      loadFriends();
     }
 
     function loadFriends() {
       const loggedInUser = localStorage.getItem("loggedInUser");
-      if (!loggedInUser) return;
-
-      const userDataString = localStorage.getItem(loggedInUser);
-      if (!userDataString) return;
-
-      const userData = JSON.parse(userDataString);
-      friendsList.innerHTML = ""; // Clear current list
-
-      if (userData.friends && userData.friends.length > 0) {
-        userData.friends.forEach(friendUsername => {
-          const friendDiv = document.createElement("div");
-          friendDiv.className = "friend";
-          friendDiv.textContent = friendUsername;
-    
-          friendsList.appendChild(friendDiv);
-        });
-      } else {
-        friendsList.innerHTML = "<p>you have no friends yet. add some!</p>";
-      }
+      const userData = JSON.parse(localStorage.getItem(loggedInUser));
+      friendsList.innerHTML = "";
+      userData.friends.forEach(friend => {
+        const friendDiv = document.createElement("div");
+        friendDiv.className = "friend";
+        friendDiv.textContent = friend;
+        friendsList.appendChild(friendDiv);
+      });
     }
 
     function createPost() {
-      const content = postContentTextarea.value.trim();
+      const content = document.getElementById("postContent").value.trim();
       const imageInput = document.getElementById("imageUpload");
       const file = imageInput.files[0];
+
+      if (!content) return;
+
       const username = localStorage.getItem("loggedInUser");
 
-      if (!content && !file) {
-          alert("Please write something or upload an image to post.");
-          return;
-      }
-      if (!username) {
-          alert("You must be logged in to post.");
-          showLogin();
-          return;
+      const postSound = document.getElementById("postSound");
+      if (postSound) {
+        postSound.currentTime = 0;
+        postSound.play().catch(err => console.warn("Post sound error:", err));
       }
       
-      playSound("postSound");
-
       if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
           const imageUrl = e.target.result;
           savePost(username, content, imageUrl);
         };
-        reader.onerror = function() {
-            alert("Error reading image file.");
-            savePost(username, content, null);
-        };
         reader.readAsDataURL(file);
       } else {
         savePost(username, content, null);
       }
 
-      postContentTextarea.value = "";
-      imageInput.value = ""; 
-      postContentTextarea.placeholder = "what's on your mind?"; 
+      document.getElementById("postContent").value = "";
+      imageInput.value = "";
     }
 
     function savePost(username, content, imageUrl) {
-      const timestamp = new Date().toISOString();
       const post = {
-        id: `post_${timestamp}_${Math.random().toString(36).substr(2, 9)}`,
         user: username,
         content,
         image: imageUrl,
         likes: 0,
-        comments: [],
-        createdAt: timestamp
+        comments: []
       };
 
       const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-      posts.unshift(post); 
+      posts.unshift(post);
       localStorage.setItem("posts", JSON.stringify(posts));
       loadFeed();
     }
 
     function loadFeed() {
-      feedDiv.innerHTML = ""; 
+      const feed = document.getElementById("feed");
+      feed.innerHTML = "";
       const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-      const loggedInUser = localStorage.getItem("loggedInUser");
+      posts.forEach((post, index) => {
+      const postDiv = document.createElement("div");
+      postDiv.className = "post auth";
 
-      if (posts.length === 0) {
-          feedDiv.innerHTML = "<p style='text-align:center; color: #777;'>No posts yet. Be the first to share something!</p>";
-          return;
+      let imageHTML = "";
+      if (post.image) {
+        imageHTML = `<img src="${post.image}" alt="Uploaded image" style="max-width:100%; border-radius: 20px; margin-top: 10px;" />`;
       }
 
-      posts.forEach((post, index) => { 
-        const postDiv = document.createElement("div");
-        postDiv.className = "post auth"; 
-        postDiv.setAttribute('data-post-id', post.id);
-
-        let imageHTML = "";
-        if (post.image) {
-          imageHTML = `<img src="${post.image}" alt="Post image" />`
-        }
-
-        const isAuthor = loggedInUser === post.user;
-        const deleteButtonHTML = isAuthor ? `<button class="delete-btn" onclick="deletePost('${post.id}')"><i class="fa-solid fa-trash"></i></button>` : "";
-
-        postDiv.innerHTML = `
-          <p><strong>${post.user}</strong>: ${post.content || ""}</p>
-          ${imageHTML}
-          <div style="margin-top:10px; display: flex; justify-content: space-around; align-items: center;">
-            <div>
-              <button class="like-btn" onclick="likePost('${post.id}')"><i class="fa-solid fa-heart"></i></button>
-              <span>${post.likes}</span> likes
-            </div>
-            ${deleteButtonHTML}
-          </div>
-          <div>
-            <input type="text" id="comment-input-${post.id}" placeholder="add a comment" style="margin-top: 10px;"/>
-            <button class="comment-btn" onclick="addComment('${post.id}')"><i class="fa-solid fa-comment"></i> comment</button>
-          </div>
-          <div id="comments-${post.id}" class="comments-section" style="text-align: left; margin-top: 10px; font-size: 0.9em;">
-            ${post.comments.map(comment => `<p><strong>${comment.user}:</strong> ${comment.text}</p>`).join('')}
-          </div>
-        `;
-        feedDiv.appendChild(postDiv);
+      postDiv.innerHTML = `
+        <p><strong>${post.user}</strong>: ${post.content}</p>
+        ${imageHTML}
+      <div>
+        <button class="like-btn" onclick="likePost(${index})">🩵</button>
+        <span>${post.likes}</span> likes
+      </div>
+      <div>
+        <input type="text" id="comment-input-${index}" placeholder="add a comment" />
+        <button class="comment-btn" onclick="addComment(${index})">💬 comment</button>
+        <button class="delete-btn" onclick="deletePost(${index})">🗑</button>
+      </div>
+      <div id="comments-${index}">
+        ${post.comments.map(comment => `<p><strong>${comment.user}:</strong> ${comment.text}</p>`).join('')}
+      </div>
+      `;
+      feed.appendChild(postDiv);
       });
     }
 
-    function likePost(postId) {
+    function likePost(index) {
       const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-      const postIndex = posts.findIndex(p => p.id === postId);
-      if (postIndex > -1) {
-        posts[postIndex].likes = (posts[postIndex].likes || 0) + 1; 
-        localStorage.setItem("posts", JSON.stringify(posts));
-        loadFeed();
-      }
-    }
-
-    function addComment(postId) {
-      const commentInput = document.getElementById(`comment-input-${postId}`);
-      const text = commentInput.value.trim();
-      const user = localStorage.getItem("loggedInUser");
-
-      if (!text) {
-          alert("Comment cannot be empty.");
-          return;
-      }
-      if (!user) {
-          alert("Please login to comment.");
-          return;
-      }
-
-      const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-      const postIndex = posts.findIndex(p => p.id === postId);
-
-      if (postIndex > -1) {
-        if (!posts[postIndex].comments) posts[postIndex].comments = []; 
-        posts[postIndex].comments.push({ user, text });
-        localStorage.setItem("posts", JSON.stringify(posts));
-        commentInput.value = ""; 
-        loadFeed(); 
-        playSound("navigateSound"); 
-      }
-    }
-
-    function deletePost(postId) {
-      const confirmation = confirm("Are you sure you want to delete this post?");
-      if (!confirmation) return;
-
-      let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-      posts = posts.filter(p => p.id !== postId); 
+      posts[index].likes++;
       localStorage.setItem("posts", JSON.stringify(posts));
       loadFeed();
-      playSound("navigateSound"); 
+    }
+
+    function addComment(index) {
+      const text = document.getElementById(`comment-input-${index}`).value.trim();
+      if (!text) return;
+      const user = localStorage.getItem("loggedInUser");
+      const posts = JSON.parse(localStorage.getItem("posts") || "[]");
+      posts[index].comments.push({ user, text });
+      localStorage.setItem("posts", JSON.stringify(posts));
+      loadFeed();
+    }
+
+    function deletePost(index) {
+      const confirmation = confirm("are you sure you want to delete this post?");
+      if (!confirmation) return;
+      const posts = JSON.parse(localStorage.getItem("posts") || "[]");
+      posts.splice(index, 1);
+      localStorage.setItem("posts", JSON.stringify(posts));
+      loadFeed();
     }
     
-    postContentTextarea.addEventListener('input', () => {
-      postContentTextarea.placeholder = postContentTextarea.value.trim() !== '' ? '' : "what's on your mind?";
+    const textarea = document.getElementById('postContent');
+    textarea.addEventListener('input', () => {
+      textarea.placeholder = textarea.value.trim() !== '' ? '' : "what's on your mind?";
     });
 
-    window.onload = function () {
-      const user = localStorage.getItem("loggedInUser");
-      setTimeout(() => {
-        startPageDiv.style.display = 'none';
-        mainContentDiv.classList.remove("hidden");
-        if (user) {
-          showFeed();
-        } else {
-          showLogin();
-        }
-      }, 3000);
-    };
-  </script>
-</body>
+    setTimeout(() => {
+      document.getElementById("startPage").style.display = 'none';
+      document.getElementById("mainContent").classList.remove("hidden");
+      showLogin();
+    }, 5000);
+    </script>
+  </body>
 </html>
