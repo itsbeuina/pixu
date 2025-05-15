@@ -10,8 +10,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
     body {
-       margin: 0;
-      background-image: url("background.png");
+       To make your HTML and CSS code more compatible with mobile browsers without negatively impacting the desktop display, several adjustments can be made. The existing code already incorporates good practices like the viewport meta tag and some media queries. The following suggestions focus on refining these aspects and addressing potential layout issues on smaller screens.
+
+Key Areas for Improvement:
+Navigation Bar (nav):
+
+Logo Size: The navigation bar logo (nav img) has a fixed height of 120px, which is quite large for mobile screens.
+Icon Button Sizes: The navigation buttons (.home-btn, .friends-btn, .logout-btn) use a large fixed font-size: 40px for icons.
+Spacing: The gap: 50px in the nav flex container might be too wide for smaller screens.
+Friends Panel (#friendsPanel):
+
+Positioning: The absolute positioning (position: absolute; left: 42%; transform: translateX(-50px);) can be problematic for responsive layouts. On mobile, this panel might be better displayed as a full-width section or an overlay.
+Input Fields (input, textarea):
+
+Negative Margins: The style margin: 0.75rem -0.80rem; uses negative horizontal margins, which can lead to unpredictable layout issues or cause content to overflow its container.
+Suggested CSS Modifications:
+Below are specific CSS changes. You should test these thoroughly on different screen sizes.
+
+CSS
+
+<style>
+    /* ... (your existing CSS above this) ... */
+
+    body {
+      margin: 0;
+      background-image: url("/Users/mac/Downloads/My Game Projects/HTMLCSSJS/pixu/background.png"); /* Consider using relative paths or ensure this path is accessible */
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -21,6 +44,11 @@
       flex-direction: column;
       min-height: 100vh;
       font-family: 'Sour Gummy', system-ui;
+      box-sizing: border-box; /* Add to include padding and border in element's total width and height */
+    }
+
+    *, *::before, *::after { /* Apply box-sizing to all elements */
+        box-sizing: border-box;
     }
 
     #startPage {
@@ -29,7 +57,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-image: url("/Users/mac/Downloads/My Game Projects/HTMLCSSJS/pixu/background.png");
+      background-image: url("/Users/mac/Downloads/My Game Projects/HTMLCSSJS/pixu/background.png"); /* Consider relative paths */
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
@@ -39,10 +67,9 @@
     }
 
     .logo {
-        width: 50%; /* Take up a percentage of the container */
-        max-width: 200px; /* But don't get HUGE on desktops */
-        height: auto;
-        animation: logoAnimation 2s ease-out forwards;
+      width: 200px;
+      height: auto;
+      animation: logoAnimation 2s ease-out forwards;
     }
 
     .slogan {
@@ -67,9 +94,10 @@
       to { opacity: 1; }
     }
 
+    /* Adjusted media query for logo and slogan for better consistency */
     @media (max-width: 768px) {
       .logo {
-          max-width: 150px; /* Smaller on mobile */
+        width: 150px;
       }
       .slogan {
         font-size: 1.5rem;
@@ -77,71 +105,61 @@
     }
 
     nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background: linear-gradient(90deg, #fff8fc, #fff8fc);
-        color: white;
-        display: flex;
-        justify-content: space-between; /* Space between items */
-        align-items: center;
-        padding: 0 1rem; /* Padding on the sides */
-        height: 60px;
-        border-bottom: 2px solid #fff8fc;
-        box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: linear-gradient(90deg, #fff8fc, #fff8fc);
+      color: white;
+      display: flex;
+      justify-content: space-around; /* This can spread items too far on wide screens, consider space-between or flex-start with margins */
+      align-items: center;
+      /* gap: 50px; */ /* Replaced with padding on items or margins for more control */
+      height: 60px; /* This is quite small if the logo inside is 120px, check consistency */
+      padding: 0 1rem; /* Add some padding to the nav */
+      border-bottom: 2px solid #fff8fc;
     }
 
-    nav img { /* Target the logo in the nav */
-        height: auto;
-        width: 50%;
-        max-height: 120px; /* Control the height */
+    /* Responsive adjustments for nav items */
+    nav > * { /* Target direct children of nav for spacing */
+        margin: 0 0.5rem; /* Add some margin for spacing instead of a large fixed gap */
     }
 
-    nav button { /* Target the buttons in the nav */
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1.5rem; /* Slightly smaller icons */
-        color: thistle;
-        padding: 0.5rem;
-    }
 
     .container {
-        width: 90%; /* Take up 90% of the screen width */
-        max-width: 600px; /* But don't get too wide on desktops */
-        margin: auto;
-        padding: 1rem; /* Reduce padding a bit */
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-sizing: border-box; /* Important for padding! */
+      max-width: 600px;
+      margin: auto; /* This centers the container */
+      /* Ensure container is also flexible for nav height. Add top margin/padding if nav is fixed. */
+      padding: calc(60px + 2rem) 1rem 2rem 1rem; /* Adjusted top padding to account for fixed nav height */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%; /* Ensure container takes full width up to max-width */
     }
 
     .post-creator {
-        background: #fff8fc;
-        padding: 1rem; /* Reduced padding */
-        border-radius: 25px; /* Less rounded on mobile */
-        margin-bottom: 1rem; /* Less margin */
-        transition: transform 0.2s ease;
-        text-align: center;
-        box-sizing: border-box; /* Important! */
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 50px; /* Large radius, consider reducing for smaller elements if it looks odd */
+      margin-top: 1.5rem; /* Adjusted from 50px */
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease;
+      text-align: center;
     }
 
     .auth, .feed, .friends-list {
-        background: #fff8fc;
-        padding: 1rem; /* Reduced padding */
-        border-radius: 25px; /* Less rounded on mobile */
-        margin-bottom: 1rem; /* Less margin */
-        transition: transform 0.2s ease;
-        text-align: center;
-        box-sizing: border-box; /* Important! */
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 50px; /* Large radius */
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s ease;
+      text-align: center;
     }
 
     input#friend-username {
-      text-align: center;
+      text-align: center; 
     }
 
     .post-creator:hover {
@@ -153,11 +171,12 @@
     }
 
     .auth-logo {
-      width: 300px;
+      width: 300px; /* Max width for desktop */
+      max-width: 100%; /* Ensure it doesn't overflow its container */
       height: auto;
-      margin: 0 auto 1rem;
-      margin-bottom: -5rem;
-      margin-top: -5rem;
+      margin: 0 auto 1rem; 
+      margin-bottom: -5rem; /* These large negative margins can be problematic, review their necessity */
+      margin-top: -5rem;   /* Review their necessity */
       display: block;
       object-fit: contain;
       background: transparent;
@@ -165,21 +184,22 @@
     }
 
     input, textarea {
-        width: 100%;
-        padding: 0.6rem; /* Slightly smaller padding */
-        margin: 0.6rem 0; /* Simplified margin */
-        border: 2px solid #ffe3e3;
-        border-radius: 25px; /* Less rounded */
-        background-color: #fffafc;
-        font-size: 0.9rem; /* Slightly smaller font */
-        color: thistle;
-        font-family: 'Sour Gummy', system-ui;
-        transition: border-color 0.3s ease;
-        box-sizing: border-box; /* Crucial! */
+      width: 100%;
+      padding: 0.75rem;
+      /* margin: 0.75rem -0.80rem; */ /* REMOVED: Negative horizontal margins can cause layout issues */
+      margin: 0.75rem 0; /* REPLACED: Use standard vertical margins */
+      border: 2px solid #ffe3e3; 
+      border-radius: 50px; /* Large radius */
+      background-color: #fffafc;
+      font-size: 1rem;
+      color: thistle; /* Ensure text color has enough contrast with background #fffafc */
+      font-family: 'Sour Gummy', system-ui;
+      transition: border-color 0.3s ease;
     }
 
     textarea#postContent {
       text-align: center;
+      min-height: 80px; /* Give textarea a default height */
     }
 
     input::placeholder, textarea::placeholder {
@@ -193,67 +213,81 @@
     }
 
     #friendsPanel {
-        position: fixed; /* Fixed positioning */
-        top: 50%;       /* Center vertically */
-        left: 50%;      /* Center horizontally */
-        transform: translate(-50%, -50%); /* Precise centering */
-        width: 80%;      /* Take up 80% of the screen */
-        max-width: 300px; /* But don't get too wide */
-        background-color: #fff8fc;
-        padding: 1rem;   /* Reduced padding */
-        border-radius: 25px; /* Less rounded */
-        box-sizing: border-box;
+      /* Original desktop positioning - may need to be overridden for mobile */
+      width: 30%;
+      max-width: 300px;
+      position: absolute; 
+      top: 80px; /* Adjust based on nav height and desired spacing */      
+      left: 50%; /* Center the panel */
+      transform: translateX(-50%); /* Center the panel */
+      background-color: #fff8fc;
+      padding: 1.5rem; /* Consistent padding */
+      border-radius: 25px; /* Adjusted radius */
+      box-sizing: border-box;
+      /* This will be part of the main content flow on mobile, handled by media queries */
     }
 
     #friendsPanel input {
-        width: 100%;    /* Full width */
-        padding: 0.5rem;
-        margin: 0.5rem 0; /* Simplified margin */
-        border-radius: 25px;
-        border: 1px solid pink;
-        box-sizing: border-box;
+      width: 100%; /* Input takes full width of its parent */
+      padding: 10px;
+      margin: 10px 0; /* Adjusted margin */
+      border-radius: 20px; /* Consistent radius */
+      border: 1px solid pink;
     }
 
     button {
-        padding: 0.5rem 1rem; /* Smaller button padding */
-        background-color: #f7cfd8;
-        color: white;
-        font-family: 'Sour Gummy', system-ui;
-        font-size: 0.9rem; /* Smaller font */
-        font-weight: bold;
-        border: none;
-        border-radius: 25px; /* Less rounded */
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        display: block;
-        margin: 0.8rem auto 0; /* Simplified margin */
-        text-align: center;
+      padding: 0.6rem 1.2rem;
+      background-color: #f7cfd8;
+      justify-content: center;
+      color: white;
+      font-family: 'Sour Gummy', system-ui;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px; /* Large radius */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: block; 
+      margin: 1rem auto 0; 
+      text-align: center; 
     }
 
     .auth p {
       text-align: center;
+      color: #333; /* Ensure readability, thistle might be too light on white background */
+    }
+    
+    .auth a {
+      color: #efb6c8; /* Link color for auth section */
     }
 
-    .home-btn {
+
+    .nav-logo-img { /* New class for the nav logo image */
+        height: 40px; /* Adjust height for nav bar */
+        width: auto;
+        margin-top: 0; /* Remove top margin if already aligned by flex */
+    }
+
+    .home-btn, .friends-btn, .logout-btn {
       margin: 0;
-      padding: 10px 20px;
+      padding: 10px; /* Reduced padding for compact nav */
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 40px;
+      font-size: 1.5rem; /* REPLACED: 40px was too large. Use rem for scalability */
       color: thistle;
     }
 
     .upload-btn {
       display: inline-block;
       background-color: #fbd6e0;
-      color: #fff9bf;
+      color: #fff9bf; /* Check contrast */
       border-radius: 20px;
       padding: 8px 16px;
       margin: 10px 0;
       cursor: pointer;
       font-family: 'Sour Gummy', system-ui;
-      font-size: 14px;
+      font-size: 14px; /* Consider using rem or em */
       border: 2px dashed thistle;
       transition: background-color 0.3s ease;
     }
@@ -262,81 +296,43 @@
       background-color: #ffe6ee;
     }
 
-    .friends-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
-
-    .logout-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
-
     .auth, .feed, .post-creator, .friends-list {
       background: #fff8fc;
+      color: #333; /* Ensure content text is readable */
     }
-
-    textarea#postContent::placeholder {
-      color: #efb6c8;
+    
+    /* Ensure placeholder text has enough contrast */
+    textarea#postContent::placeholder,
+    input#friend-username::placeholder {
+      color: #aaa; /* Darker placeholder for better visibility */
       opacity: 1;
       text-align: center;
     }
 
-    textarea#postContent:focus::placeholder {
-      opacity: 0;
-    }
-
-    input#friend-username::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-    }
-
+    textarea#postContent:focus::placeholder,
     input#friend-username:focus::placeholder {
       opacity: 0;
-      text-align: center;
     }
 
-    .delete-btn {
-      background: none;
-      border: none;
-      color: #efb6c8;
-      cursor: pointer;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .like-btn, .add-friend-btn, .comment-btn {
+    .delete-btn, .like-btn, .add-friend-btn, .comment-btn {
       background: none;
       border: none;
       color: #efb6c8;
       cursor: pointer;
       margin-right: 5px;
       font-weight: bold;
+      padding: 0.5rem; /* Add some padding to increase tap target size */
+    }
+    .like-btn i, .comment-btn i, .delete-btn i { /* If using font awesome icons inside buttons */
+        font-size: 1.2rem;
     }
 
-    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover {
+
+    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover, .delete-btn:hover {
       color: #cb80ab;
     }
 
-    .home-btn:hover {
-      color: #eecad5;
-    }
-
-    .friends-btn:hover {
-      color: #eecad5;
-    }
-
-    .logout-btn:hover {
+    .home-btn:hover, .friends-btn:hover, .logout-btn:hover {
       color: #eecad5;
     }
 
@@ -347,91 +343,157 @@
       margin-bottom: 0.5rem;
       padding: 0.5rem;
       border-bottom: 1px dashed #ffc0cb;
+      color: #333; /* Ensure text color is readable */
     }
 
     a {
-      color: #c6e7ff;
+      /* color: #c6e7ff; */ /* This color might not be accessible on all backgrounds. Consider context. */
       text-decoration: none;
       font-weight: bold;
     }
+    /* General link styling, ensure high contrast */
+    a:not(.auth a) { /* Avoid overriding .auth a styles if they are specific */
+        color: #d185a3; /* A general link color, adjust as needed */
+    }
+
 
     a:hover {
       text-decoration: underline;
     }
 
     .hidden {
-      display: none;
+      display: none !important; /* Ensure hidden class always hides */
+    }
+    
+    /* IMAGE STYLING in posts */
+    .post img {
+        max-width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 15px; /* Consistent border radius */
+        margin-top: 10px;
     }
 
+
+    /* MEDIUM SCREENS & TABLETS */
     @media (max-width: 768px) {
-        .logo {
-            max-width: 150px; 
-        }
-        nav img {
-          max-height: 80px;
-        }
+      .container {
+        max-width: 95%; 
+        margin: 0 auto; /* Center container */
+        padding: calc(60px + 1.5rem) 1rem 1.5rem 1rem; /* Adjust padding */
+      }
 
-        .container {
-            width: 95%; 
-            padding: 1rem;
-        }
+      .auth {
+        padding: 1.2rem;
+        border-radius: 25px; /* Consistent radius */
+        margin-bottom: 1.2rem;
+      }
 
-        .auth, .feed, .post-creator, .friends-list {
-            padding: 0.8rem;
-            border-radius: 18px;
-            margin-bottom: 0.8rem;
-        }
+      .auth-logo {
+        width: 200px; /* Adjusted size */
+        margin-top: -3rem; /* Review negative margins */
+        margin-bottom: -3rem;
+      }
 
-        input, textarea {
-            font-size: 0.85rem;
-            border-radius: 20px; 
-        }
+      input, textarea {
+        padding: 0.7rem;
+        /* margin: 0.7rem -0.7rem; */ /* REMOVED */
+        margin: 0.7rem 0;        /* REPLACED */
+        border-radius: 20px; /* Consistent radius */
+        font-size: 0.95rem;
+      }
 
-        button {
-            font-size: 0.85rem;
-            border-radius: 20px;
-            padding: 0.4rem 0.8rem;
-        }
+      button {
+        font-size: 0.95rem;
+        border-radius: 20px; /* Consistent radius */
+        padding: 0.7rem 1.2rem;
+      }
 
-        .auth-logo {
-          width: 250px;
-          margin-top: -4rem;
-        }
+      .auth p {
+        font-size: 0.9rem;
+        margin-top: 0.6rem;
+      }
 
-        .auth p {
-          font-size: 0.9rem;
-          margin-top: 0.6rem;
-        }
+      .nav-logo-img { /* Logo in nav for smaller screens */
+          height: 35px;
+      }
+      .home-btn, .friends-btn, .logout-btn {
+          font-size: 1.3rem; /* Slightly smaller icons for nav */
+      }
+
+      /* For Friends Panel on smaller screens, make it part of the flow or a modal */
+      #friendsPanel {
+        position: static; /* Remove absolute positioning */
+        width: 100%; /* Full width */
+        max-width: 100%;
+        margin-top: 1rem;
+        transform: none; /* Reset transform */
+        left: auto; /* Reset left */
+        top: auto; /* Reset top */
+        /* It will now appear within the .container when not hidden */
+      }
     }
 
+    /* SMALL SCREENS (MOBILE) */
     @media (max-width: 480px) {
-        input, textarea {
-            font-size: 0.85rem;
-            border-radius: 20px;
-        }
+      .auth-logo {
+        width: 150px; /* Further reduce logo size */
+        margin-bottom: -2rem; /* Review negative margins */
+        margin-top: -2rem;
+      }
 
-        button {
-            font-size: 0.85rem;
-            border-radius: 20px;
-            padding: 0.4rem 0.8rem;
-        }
+      input, textarea {
+        font-size: 0.9rem;
+        border-radius: 15px; /* Smaller radius for smaller elements */
+      } 
 
-        .auth-logo {
-          width: 180px;
-          margin-bottom: -3rem;
-          margin-top: -3rem;
-        }
+      button {
+        font-size: 0.9rem;
+        border-radius: 15px; /* Smaller radius */
+        padding: 0.6rem 1rem;
+      }
 
-        .auth p {
-          font-size: 0.85rem;
-        }
+      .auth p {
+        font-size: 0.85rem;
+      }
+      
+      nav {
+        padding: 0 0.5rem; /* Reduce nav padding */
+      }
+      nav > * {
+        margin: 0 0.25rem; /* Reduce nav item margins */
+      }
+      .nav-logo-img {
+          height: 30px;
+      }
+      .home-btn, .friends-btn, .logout-btn {
+          font-size: 1.2rem; /* Further adjust icon size */
+          padding: 8px;
+      }
+
+      .post-creator, .auth, .feed, .friends-list {
+        border-radius: 20px; /* Adjust radius */
+        padding: 1rem;
+      }
+
+      #friendsPanel {
+        padding: 1rem;
+        border-radius: 20px;
+      }
+      #friendsPanel input {
+        border-radius: 15px;
+      }
     }
 
+    /* This media query for friendsPanel was specific. Integrated its width into the general mobile adjustments.
     @media (max-width: 600px) {
-        #friendsPanel {
-            width: 95%;  
-            padding: 0.8rem;
-        }
+      #friendsPanel {
+        width: 95%; // Handled by max-width: 768px rule now to be width: 100%
+        padding: 15px;
+      }
+
+      #friendsPanel input {
+        width: 100%; // Already handled
+      }
     }
   </style>
 </head>
