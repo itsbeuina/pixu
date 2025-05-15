@@ -66,19 +66,13 @@
       to { opacity: 1; }
     }
 
-    /* General Styles */
-    body {
-      margin: 0;
-      background-image: url("/Users/mac/Downloads/My Game Projects/HTMLCSSJS/pixu/background.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: thistle;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-family: 'Sour Gummy', system-ui;
+    @media (max-width: 768px) {
+      .logo {
+        width: 150px;
+      }
+      .slogan {
+        font-size: 1.5rem;
+      }
     }
 
     nav {
@@ -349,46 +343,65 @@
       display: none;
     }
 
-    /* Media Queries for Mobile Devices */
     @media (max-width: 768px) {
-      .logo {
-        width: 150px; /* Adjust logo size */
-      }
-      .slogan {
-        font-size: 1.5rem; /* Adjust slogan size */
-      }
       .container {
-        max-width: 95%; /* Use percentage for width */
-        margin: 2rem auto; /* Center container */
-        padding: 1.5rem; /* Adjust padding */
+        max-width: 95%; 
+        margin: 2rem auto;
+        padding: 1.5rem;
       }
-      nav {
-        flex-direction: column; /* Stack nav items vertically */
-        height: auto; /* Allow height to adjust */
-      }
-      button {
-        font-size: 0.95rem; /* Adjust button font size */
-        padding: 0.7rem 1.2rem; /* Adjust button padding */
-      }
-      input, textarea {
-        padding: 0.7rem; /* Adjust input padding */
-        font-size: 0.95rem; /* Adjust input font size */
-      }
-    }
 
-    /* Further adjustments for very small screens */
-    @media (max-width: 480px) {
+      .auth {
+        padding: 1.2rem;
+        border-radius: 18px;
+        margin-bottom: 1.2rem;
+      }
+
       .auth-logo {
-        width: 180px; /* Adjust logo size for small screens */
+        width: 250px;
+        margin-top: -4rem;
       }
+
+      input, textarea {
+        padding: 0.7rem;
+        margin: 0.7rem -0.7rem;
+        border-radius: 50px;
+        font-size: 0.95rem;
+      }
+
       button {
-        font-size: 0.9rem; /* Further adjust button font size */
-        padding: 0.6rem 1rem; /* Further adjust button padding */
+        font-size: 0.95rem;
+        border-radius: 50px;
+        padding: 0.7rem 1.2rem;
       }
+
       .auth p {
-        font-size: 0.85rem; /* Adjust paragraph font size */
+        font-size: 0.9rem;
+        margin-top: 0.6rem;
+        }
       }
-    }
+
+      @media (max-width: 480px) {
+        .auth-logo {
+          width: 180px; 
+          margin-bottom: -3rem;
+          margin-top: -3rem;
+        }
+
+        input, textarea {
+          font-size: 0.9rem;
+          border-radius: 50px;
+        } 
+
+        button {
+          font-size: 0.9rem;
+          border-radius: 50px;
+          padding: 0.6rem 1rem;
+        }
+
+        .auth p {
+          font-size: 0.85rem;
+        }
+      }
 
     @media (max-width: 600px) {
       #friendsPanel {
@@ -407,7 +420,7 @@
     <img src="logo.png" alt="Pixu Logo" class="logo.png" />
     <div class="slogan">connects life, enjoy moment.</div>
   </div>
-  <div id="mainContent" class="hidden"></div>
+    <div id="mainContent" class="hidden"></div>
 
   <nav id="navbar" class="hidden">
     <img src="logo.png" alt="Logo" style="height: 120px; width: auto; margin-top: 10px;" />
@@ -456,7 +469,7 @@
         <input type="file" id="imageUpload" accept="image/*" hidden>
         <button onclick="createPost()">post</button>
       </div>
-      <div id="feed"></div>
+    <div id="feed"></div>
     </div>
 
     <audio id="signupSound" src="click-sound.wav" preload="auto"></audio>
@@ -467,6 +480,8 @@
     <audio id="friendsSound" src="click-sound.wav" preload="auto"></audio>
     <audio id="postSound" src="post-sound.wav" preload="auto"></audio>
     <audio id="typingSound" src="typing-sound.wav" preload="auto"></audio>
+
+
   </div>
 
   <script>
@@ -478,7 +493,7 @@
     const friendsList = document.getElementById("friendsList");
 
     window.onload = function () {
-      const user = localStorage.getItem("loggedInUser ");
+      const user = localStorage.getItem("loggedInUser");
       if (user) {
         showFeed();
       } else {
@@ -488,13 +503,14 @@
 
     document.querySelectorAll('input, textarea').forEach(element => {
       element.addEventListener('input', () => {
-        const sound = document.getElementById("typingSound");
+      const sound = document.getElementById("typingSound");
         if (sound) {
           const clone = sound.cloneNode();
           clone.play().catch(err => console.warn("Typing sound error:", err));
         }
       });
     });
+
 
     function showLogin() {
       loginPage.classList.remove("hidden");
@@ -559,7 +575,7 @@
       if (!userData) return alert("user not found!");
       const user = JSON.parse(userData);
       if (user.password !== password) return alert("wrong password!");
-      localStorage.setItem("loggedInUser ", username);
+      localStorage.setItem("loggedInUser", username);
 
       const sound = document.getElementById("loginSound");
       if (sound) {
@@ -578,7 +594,7 @@
         logoutSound.play().catch(err => console.warn("Logout sound error:", err));
       }
 
-      localStorage.removeItem("loggedInUser ");
+      localStorage.removeItem("loggedInUser");
       showLogin();
       document.getElementById("friendsPanel").classList.add("hidden");
     }
@@ -586,13 +602,13 @@
     function addFriend() {
       const friendUsername = document.getElementById("friend-username").value.trim();
       if (!friendUsername) return;
-      const loggedInUser  = localStorage.getItem("loggedInUser ");
-      const userData = JSON.parse(localStorage.getItem(loggedInUser ));
+      const loggedInUser = localStorage.getItem("loggedInUser");
+      const userData = JSON.parse(localStorage.getItem(loggedInUser));
       if (userData.friends.includes(friendUsername)) return alert("already friends!");
       const friendData = localStorage.getItem(friendUsername);
       if (!friendData) return alert("user not found!");
       userData.friends.push(friendUsername);
-      localStorage.setItem(loggedInUser , JSON.stringify(userData));
+      localStorage.setItem(loggedInUser, JSON.stringify(userData));
       alert(`you are now friends with ${friendUsername}!`);
       loadFriends();
     }
@@ -613,8 +629,8 @@
     }
 
     function loadFriends() {
-      const loggedInUser  = localStorage.getItem("loggedInUser ");
-      const userData = JSON.parse(localStorage.getItem(loggedInUser ));
+      const loggedInUser = localStorage.getItem("loggedInUser");
+      const userData = JSON.parse(localStorage.getItem(loggedInUser));
       friendsList.innerHTML = "";
       userData.friends.forEach(friend => {
         const friendDiv = document.createElement("div");
@@ -631,7 +647,7 @@
 
       if (!content) return;
 
-      const username = localStorage.getItem("loggedInUser ");
+      const username = localStorage.getItem("loggedInUser");
 
       const postSound = document.getElementById("postSound");
       if (postSound) {
@@ -674,31 +690,31 @@
       feed.innerHTML = "";
       const posts = JSON.parse(localStorage.getItem("posts") || "[]");
       posts.forEach((post, index) => {
-        const postDiv = document.createElement("div");
-        postDiv.className = "post auth";
+      const postDiv = document.createElement("div");
+      postDiv.className = "post auth";
 
-        let imageHTML = "";
-        if (post.image) {
-          imageHTML = `<img src="${post.image}" alt="Uploaded image" style="max-width:100%; border-radius: 20px; margin-top: 10px;" />`;
-        }
+      let imageHTML = "";
+      if (post.image) {
+        imageHTML = `<img src="${post.image}" alt="Uploaded image" style="max-width:100%; border-radius: 20px; margin-top: 10px;" />`;
+      }
 
-        postDiv.innerHTML = `
-          <p><strong>${post.user}</strong>: ${post.content}</p>
-          ${imageHTML}
-          <div>
-            <button class="like-btn" onclick="likePost(${index})">🩵</button>
-            <span>${post.likes}</span> likes
-          </div>
-          <div>
-            <input type="text" id="comment-input-${index}" placeholder="add a comment" />
-            <button class="comment-btn" onclick="addComment(${index})">💬 comment</button>
-            <button class="delete-btn" onclick="deletePost(${index})">🗑</button>
-          </div>
-          <div id="comments-${index}">
-            ${post.comments.map(comment => `<p><strong>${comment.user}:</strong> ${comment.text}</p>`).join('')}
-          </div>
-        `;
-        feed.appendChild(postDiv);
+      postDiv.innerHTML = `
+        <p><strong>${post.user}</strong>: ${post.content}</p>
+        ${imageHTML}
+      <div>
+        <button class="like-btn" onclick="likePost(${index})">🩵</button>
+        <span>${post.likes}</span> likes
+      </div>
+      <div>
+        <input type="text" id="comment-input-${index}" placeholder="add a comment" />
+        <button class="comment-btn" onclick="addComment(${index})">💬 comment</button>
+        <button class="delete-btn" onclick="deletePost(${index})">🗑</button>
+      </div>
+      <div id="comments-${index}">
+        ${post.comments.map(comment => `<p><strong>${comment.user}:</strong> ${comment.text}</p>`).join('')}
+      </div>
+      `;
+      feed.appendChild(postDiv);
       });
     }
 
@@ -712,7 +728,7 @@
     function addComment(index) {
       const text = document.getElementById(`comment-input-${index}`).value.trim();
       if (!text) return;
-      const user = localStorage.getItem("loggedInUser ");
+      const user = localStorage.getItem("loggedInUser");
       const posts = JSON.parse(localStorage.getItem("posts") || "[]");
       posts[index].comments.push({ user, text });
       localStorage.setItem("posts", JSON.stringify(posts));
@@ -738,6 +754,6 @@
       document.getElementById("mainContent").classList.remove("hidden");
       showLogin();
     }, 5000);
-  </script>
-</body>
+    </script>
+  </body>
 </html>
