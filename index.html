@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
+       margin: 0;
       background-image: url("background.png");
       background-repeat: no-repeat;
       background-size: cover;
@@ -39,9 +39,10 @@
     }
 
     .logo {
-      width: 200px;
-      height: auto;
-      animation: logoAnimation 2s ease-out forwards;
+        width: 50%; /* Take up a percentage of the container */
+        max-width: 200px; /* But don't get HUGE on desktops */
+        height: auto;
+        animation: logoAnimation 2s ease-out forwards;
     }
 
     .slogan {
@@ -68,7 +69,7 @@
 
     @media (max-width: 768px) {
       .logo {
-        width: 150px;
+          max-width: 150px; /* Smaller on mobile */
       }
       .slogan {
         font-size: 1.5rem;
@@ -76,52 +77,71 @@
     }
 
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: linear-gradient(90deg, #fff8fc, #fff8fc);
-      color: white;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 50px;
-      height: 60px;
-      border-bottom: 2px solid #fff8fc;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background: linear-gradient(90deg, #fff8fc, #fff8fc);
+        color: white;
+        display: flex;
+        justify-content: space-between; /* Space between items */
+        align-items: center;
+        padding: 0 1rem; /* Padding on the sides */
+        height: 60px;
+        border-bottom: 2px solid #fff8fc;
+        box-sizing: border-box;
+    }
+
+    nav img { /* Target the logo in the nav */
+        height: auto;
+        width: 50%;
+        max-height: 120px; /* Control the height */
+    }
+
+    nav button { /* Target the buttons in the nav */
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.5rem; /* Slightly smaller icons */
+        color: thistle;
+        padding: 0.5rem;
     }
 
     .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 2rem 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+        width: 90%; /* Take up 90% of the screen width */
+        max-width: 600px; /* But don't get too wide on desktops */
+        margin: auto;
+        padding: 1rem; /* Reduce padding a bit */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box; /* Important for padding! */
     }
 
     .post-creator {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 50px;
-      margin-top: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
+        background: #fff8fc;
+        padding: 1rem; /* Reduced padding */
+        border-radius: 25px; /* Less rounded on mobile */
+        margin-bottom: 1rem; /* Less margin */
+        transition: transform 0.2s ease;
+        text-align: center;
+        box-sizing: border-box; /* Important! */
     }
 
     .auth, .feed, .friends-list {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
+        background: #fff8fc;
+        padding: 1rem; /* Reduced padding */
+        border-radius: 25px; /* Less rounded on mobile */
+        margin-bottom: 1rem; /* Less margin */
+        transition: transform 0.2s ease;
+        text-align: center;
+        box-sizing: border-box; /* Important! */
     }
 
     input#friend-username {
-      text-align: center; 
+      text-align: center;
     }
 
     .post-creator:hover {
@@ -145,16 +165,17 @@
     }
 
     input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.75rem -0.80rem;
-      border: 2px solid #ffe3e3; 
-      border-radius: 50px;
-      background-color: #fffafc;
-      font-size: 1rem;
-      color: thistle;
-      font-family: 'Sour Gummy', system-ui;
-      transition: border-color 0.3s ease;
+        width: 100%;
+        padding: 0.6rem; /* Slightly smaller padding */
+        margin: 0.6rem 0; /* Simplified margin */
+        border: 2px solid #ffe3e3;
+        border-radius: 25px; /* Less rounded */
+        background-color: #fffafc;
+        font-size: 0.9rem; /* Slightly smaller font */
+        color: thistle;
+        font-family: 'Sour Gummy', system-ui;
+        transition: border-color 0.3s ease;
+        box-sizing: border-box; /* Crucial! */
     }
 
     textarea#postContent {
@@ -172,42 +193,41 @@
     }
 
     #friendsPanel {
-      width: 30%;
-      max-width: 300px;
-      position: absolute; 
-      top: 200px;       
-      left: 42%;        
-      transform: translateX(-50px);
-      background-color: #fff8fc;
-      padding: 50px;
-      border-radius: 50px;
-      box-sizing: border-box;
+        position: fixed; /* Fixed positioning */
+        top: 50%;       /* Center vertically */
+        left: 50%;      /* Center horizontally */
+        transform: translate(-50%, -50%); /* Precise centering */
+        width: 80%;      /* Take up 80% of the screen */
+        max-width: 300px; /* But don't get too wide */
+        background-color: #fff8fc;
+        padding: 1rem;   /* Reduced padding */
+        border-radius: 25px; /* Less rounded */
+        box-sizing: border-box;
     }
 
     #friendsPanel input {
-      width: 95%;
-      padding: 10px;
-      margin: 10px 10px 10px 10px;
-      border-radius: 50px;
-      border: 1px solid pink;
-      box-sizing: border-box;
+        width: 100%;    /* Full width */
+        padding: 0.5rem;
+        margin: 0.5rem 0; /* Simplified margin */
+        border-radius: 25px;
+        border: 1px solid pink;
+        box-sizing: border-box;
     }
 
     button {
-      padding: 0.6rem 1.2rem;
-      background-color: #f7cfd8;
-      justify-content: center;
-      color: white;
-      font-family: 'Sour Gummy', system-ui;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: block; 
-      margin: 1rem auto 0; 
-      text-align: center; 
+        padding: 0.5rem 1rem; /* Smaller button padding */
+        background-color: #f7cfd8;
+        color: white;
+        font-family: 'Sour Gummy', system-ui;
+        font-size: 0.9rem; /* Smaller font */
+        font-weight: bold;
+        border: none;
+        border-radius: 25px; /* Less rounded */
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        display: block;
+        margin: 0.8rem auto 0; /* Simplified margin */
+        text-align: center;
     }
 
     .auth p {
@@ -344,74 +364,74 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        max-width: 95%; 
-        margin: 2rem auto;
-        padding: 1.5rem;
-      }
-
-      .auth {
-        padding: 1.2rem;
-        border-radius: 18px;
-        margin-bottom: 1.2rem;
-      }
-
-      .auth-logo {
-        width: 250px;
-        margin-top: -4rem;
-      }
-
-      input, textarea {
-        padding: 0.7rem;
-        margin: 0.7rem -0.7rem;
-        border-radius: 50px;
-        font-size: 0.95rem;
-      }
-
-      button {
-        font-size: 0.95rem;
-        border-radius: 50px;
-        padding: 0.7rem 1.2rem;
-      }
-
-      .auth p {
-        font-size: 0.9rem;
-        margin-top: 0.6rem;
+        .logo {
+            max-width: 150px; 
         }
-      }
+        nav img {
+          max-height: 80px;
+        }
 
-      @media (max-width: 480px) {
-        .auth-logo {
-          width: 180px; 
-          margin-bottom: -3rem;
-          margin-top: -3rem;
+        .container {
+            width: 95%; 
+            padding: 1rem;
+        }
+
+        .auth, .feed, .post-creator, .friends-list {
+            padding: 0.8rem;
+            border-radius: 18px;
+            margin-bottom: 0.8rem;
         }
 
         input, textarea {
-          font-size: 0.9rem;
-          border-radius: 50px;
-        } 
+            font-size: 0.85rem;
+            border-radius: 20px; 
+        }
 
         button {
+            font-size: 0.85rem;
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .auth-logo {
+          width: 250px;
+          margin-top: -4rem;
+        }
+
+        .auth p {
           font-size: 0.9rem;
-          border-radius: 50px;
-          padding: 0.6rem 1rem;
+          margin-top: 0.6rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        input, textarea {
+            font-size: 0.85rem;
+            border-radius: 20px;
+        }
+
+        button {
+            font-size: 0.85rem;
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .auth-logo {
+          width: 180px;
+          margin-bottom: -3rem;
+          margin-top: -3rem;
         }
 
         .auth p {
           font-size: 0.85rem;
         }
-      }
+    }
 
     @media (max-width: 600px) {
-      #friendsPanel {
-        width: 95%;
-        padding: 15px;
-      }
-
-      #friendsPanel input {
-        width: 100%;
-      }
+        #friendsPanel {
+            width: 95%;  
+            padding: 0.8rem;
+        }
     }
   </style>
 </head>
