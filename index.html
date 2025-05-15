@@ -9,410 +9,448 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      background-image: url("background.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: thistle;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-family: 'Sour Gummy', system-ui;
-    }
+    *, *::before, *::after {
+  box-sizing: border-box;
+}
 
-    #startPage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url("background.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      color: thistle;
-      animation: fadeIn 3s ease-out;
-      text-align: center;
-    }
+body {
+  margin: 0;
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: thistle;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Sour Gummy', system-ui;
+}
 
-    .logo {
-      width: 200px;
-      height: auto;
-      animation: logoAnimation 2s ease-out forwards;
-    }
+/* Start Page Styles (Mostly fine, as you've made it responsive) */
+#startPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: thistle;
+  animation: fadeIn 3s ease-out;
+  text-align: center;
+}
 
-    .slogan {
-      font-size: 2rem;
-      margin-top: 20px;
-      opacity: 0;
-      animation: sloganAnimation 2s ease-out 1s forwards;
-    }
+.logo {
+  width: 200px;
+  height: auto;
+  animation: logoAnimation 2s ease-out forwards;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+.slogan {
+  font-size: 2rem;
+  margin-top: 20px;
+  opacity: 0;
+  animation: sloganAnimation 2s ease-out 1s forwards;
+}
 
-    @keyframes logoAnimation {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    @keyframes sloganAnimation {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+@keyframes logoAnimation {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    @media (max-width: 768px) {
-      .logo {
-        width: 150px;
-      }
-      .slogan {
-        font-size: 1.5rem;
-      }
-    }
+@keyframes sloganAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: linear-gradient(90deg, #fff8fc, #fff8fc);
-      color: white;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 50px;
-      height: 60px;
-      border-bottom: 2px solid #fff8fc;
-    }
+@media (max-width: 768px) {
+  .logo {
+    width: 150px;
+  }
+  .slogan {
+    font-size: 1.5rem;
+  }
+}
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 2rem 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(90deg, #fff8fc, #fff8fc);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+  height: 60px;
+  border-bottom: 2px solid #fff8fc;
+}
 
-    .post-creator {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 50px;
-      margin-top: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
+@media (max-width: 768px) {
+  nav {
+    height: auto; /* Allow height to adjust */
+    padding: 10px 0; /* Add vertical padding */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items */
+    gap: 10px; /* Reduce gap */
+  }
+}
 
-    .auth, .feed, .friends-list {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
+/* Main Content Container */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    input#friend-username {
-      text-align: center; 
-    }
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
+}
 
-    .post-creator:hover {
-      transform: scale(1.01);
-    }
+/* Post Creator */
+.post-creator {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 50px;
+  margin-top: 50px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
 
-    .auth:hover, .friends-list:hover {
-      transform: scale(1.01);
-    }
+.post-creator:hover {
+  transform: scale(1.01);
+}
 
-    .auth-logo {
-      width: 300px;
-      height: auto;
-      margin: 0 auto 1rem;
-      margin-bottom: -5rem;
-      margin-top: -5rem;
-      display: block;
-      object-fit: contain;
-      background: transparent;
-      animation: fadeIn 0.6s ease;
-    }
+/* Authentication and Friends List */
+.auth, .feed, .friends-list {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.75rem -0.80rem;
-      border: 2px solid #ffe3e3; 
-      border-radius: 50px;
-      background-color: #fffafc;
-      font-size: 1rem;
-      color: thistle;
-      font-family: 'Sour Gummy', system-ui;
-      transition: border-color 0.3s ease;
-    }
+.auth:hover, .friends-list:hover {
+  transform: scale(1.01);
+}
 
-    textarea#postContent {
-      text-align: center;
-    }
+/* Auth Logo */
+.auth-logo {
+  width: 300px;
+  height: auto;
+  margin: 0 auto 1rem;
+  margin-bottom: -5rem;
+  margin-top: -5rem;
+  display: block;
+  object-fit: contain;
+  background: transparent;
+  animation: fadeIn 0.6s ease;
+}
 
-    input::placeholder, textarea::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-    }
+/* Inputs and Textareas */
+input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem -0.80rem;
+  border: 2px solid #ffe3e3;
+  border-radius: 50px;
+  background-color: #fffafc;
+  font-size: 1rem;
+  color: thistle;
+  font-family: 'Sour Gummy', system-ui;
+  transition: border-color 0.3s ease;
+}
 
-    input:focus, textarea:focus {
-      border-color: #f7cfd8;
-      outline: none;
-    }
+textarea#postContent {
+  text-align: center;
+}
 
-    #friendsPanel {
-      width: 30%;
-      max-width: 300px;
-      position: absolute; 
-      top: 200px;       
-      left: 42%;        
-      transform: translateX(-50px);
-      background-color: #fff8fc;
-      padding: 50px;
-      border-radius: 50px;
-      box-sizing: border-box;
-    }
+input::placeholder, textarea::placeholder {
+  color: #efb6c8;
+  opacity: 1;
+}
 
-    #friendsPanel input {
-      width: 95%;
-      padding: 10px;
-      margin: 10px 10px 10px 10px;
-      border-radius: 50px;
-      border: 1px solid pink;
-      box-sizing: border-box;
-    }
+input:focus, textarea:focus {
+  border-color: #f7cfd8;
+  outline: none;
+}
 
-    button {
-      padding: 0.6rem 1.2rem;
-      background-color: #f7cfd8;
-      justify-content: center;
-      color: white;
-      font-family: 'Sour Gummy', system-ui;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: block; 
-      margin: 1rem auto 0; 
-      text-align: center; 
-    }
+/* Friends Panel */
+#friendsPanel {
+  width: 30%;
+  max-width: 300px;
+  position: absolute;
+  top: 200px;
+  left: 42%;
+  transform: translateX(-50px);
+  background-color: #fff8fc;
+  padding: 50px;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
 
-    .auth p {
-      text-align: center;
-    }
+#friendsPanel input {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  border-radius: 50px;
+  border: 1px solid pink;
+  box-sizing: border-box;
+}
 
-    .home-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
+@media (max-width: 600px) {
+  #friendsPanel {
+    width: 95%;
+    padding: 15px;
+  }
 
-    .upload-btn {
-      display: inline-block;
-      background-color: #fbd6e0;
-      color: #fff9bf;
-      border-radius: 20px;
-      padding: 8px 16px;
-      margin: 10px 0;
-      cursor: pointer;
-      font-family: 'Sour Gummy', system-ui;
-      font-size: 14px;
-      border: 2px dashed thistle;
-      transition: background-color 0.3s ease;
-    }
+  #friendsPanel input {
+    width: 100%;
+  }
+}
 
-    .upload-btn:hover {
-      background-color: #ffe6ee;
-    }
+/* Buttons */
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #f7cfd8;
+  justify-content: center;
+  color: white;
+  font-family: 'Sour Gummy', system-ui;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 1rem auto 0;
+  text-align: center;
+}
 
-    .friends-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
+/* Home, Friends, Logout Buttons */
+.home-btn, .friends-btn, .logout-btn {
+  margin: 0;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+  color: thistle;
+}
 
-    .logout-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
+.home-btn:hover, .friends-btn:hover, .logout-btn:hover {
+  color: #eecad5;
+}
 
-    .auth, .feed, .post-creator, .friends-list {
-      background: #fff8fc;
-    }
+/* Upload Button */
+.upload-btn {
+  display: inline-block;
+  background-color: #fbd6e0;
+  color: #fff9bf;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-family: 'Sour Gummy', system-ui;
+  font-size: 14px;
+  border: 2px dashed thistle;
+  transition: background-color 0.3s ease;
+}
 
-    textarea#postContent::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-      text-align: center;
-    }
+.upload-btn:hover {
+  background-color: #ffe6ee;
+}
 
-    textarea#postContent:focus::placeholder {
-      opacity: 0;
-    }
+/* Delete, Like, Add Friend, Comment Buttons */
+.delete-btn, .like-btn, .add-friend-btn, .comment-btn {
+  background: none;
+  border: none;
+  color: #efb6c8;
+  cursor: pointer;
+  justify-content: center;
+  font-weight: bold;
+}
 
-    input#friend-username::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-    }
+.like-btn:hover, .add-friend-btn:hover, .comment-btn:hover {
+  color: #cb80ab;
+}
 
-    input#friend-username:focus::placeholder {
-      opacity: 0;
-      text-align: center;
-    }
+/* Friend List Items */
+.friend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px dashed #ffc0cb;
+}
 
-    .delete-btn {
-      background: none;
-      border: none;
-      color: #efb6c8;
-      cursor: pointer;
-      justify-content: center;
-      font-weight: bold;
-    }
+/* Links */
+a {
+  color: #c6e7ff;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .like-btn, .add-friend-btn, .comment-btn {
-      background: none;
-      border: none;
-      color: #efb6c8;
-      cursor: pointer;
-      margin-right: 5px;
-      font-weight: bold;
-    }
+a:hover {
+  text-decoration: underline;
+}
 
-    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover {
-      color: #cb80ab;
-    }
+/* Hidden Class */
+.hidden {
+  display: none;
+}
 
-    .home-btn:hover {
-      color: #eecad5;
-    }
+/* Post Styles */
+.post {
+  background: #fff8fc;
+  padding: 1rem;
+  border-radius: 18px;
+  margin-bottom: 1rem;
+}
 
-    .friends-btn:hover {
-      color: #eecad5;
-    }
+.post p {
+  margin-bottom: 0.5rem;
+}
 
-    .logout-btn:hover {
-      color: #eecad5;
-    }
+.post img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
 
-    .friend {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      padding: 0.5rem;
-      border-bottom: 1px dashed #ffc0cb;
-    }
+.post > div {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
 
-    a {
-      color: #c6e7ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.post input[type="text"] {
+  width: 70%; /* Adjust as needed */
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  margin-right: 0.5rem;
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+.post button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
 
-    .hidden {
-      display: none;
-    }
+#feed {
+  margin-top: 1rem;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        max-width: 95%; 
-        margin: 2rem auto;
-        padding: 1.5rem;
-      }
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  /* General Layout Adjustments */
+  body {
+    padding-bottom: 60px; /* Make space for fixed navbar */
+  }
 
-      .auth {
-        padding: 1.2rem;
-        border-radius: 18px;
-        margin-bottom: 1.2rem;
-      }
+  .container {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+  }
 
-      .auth-logo {
-        width: 250px;
-        margin-top: -4rem;
-      }
+  /* Authentication */
+  .auth {
+    padding: 1.2rem;
+    border-radius: 18px;
+    margin-bottom: 1.2rem;
+  }
 
-      input, textarea {
-        padding: 0.7rem;
-        margin: 0.7rem -0.7rem;
-        border-radius: 50px;
-        font-size: 0.95rem;
-      }
+  .auth-logo {
+    width: 250px;
+    margin-top: -4rem;
+  }
 
-      button {
-        font-size: 0.95rem;
-        border-radius: 50px;
-        padding: 0.7rem 1.2rem;
-      }
+  input, textarea {
+    padding: 0.7rem;
+    margin: 0.7rem -0.7rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+  }
 
-      .auth p {
-        font-size: 0.9rem;
-        margin-top: 0.6rem;
-        }
-      }
+  button {
+    font-size: 0.95rem;
+    border-radius: 50px;
+    padding: 0.7rem 1.2rem;
+  }
 
-      @media (max-width: 480px) {
-        .auth-logo {
-          width: 180px; 
-          margin-bottom: -3rem;
-          margin-top: -3rem;
-        }
+  .auth p {
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
+  }
 
-        input, textarea {
-          font-size: 0.9rem;
-          border-radius: 50px;
-        } 
+  /* Post Adjustments */
+  .post {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
 
-        button {
-          font-size: 0.9rem;
-          border-radius: 50px;
-          padding: 0.6rem 1rem;
-        }
+  .post button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+  }
 
-        .auth p {
-          font-size: 0.85rem;
-        }
-      }
+  .post > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    @media (max-width: 600px) {
-      #friendsPanel {
-        width: 95%;
-        padding: 15px;
-      }
+  .post input[type="text"] {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
 
-      #friendsPanel input {
-        width: 100%;
-      }
-    }
+@media (max-width: 480px) {
+  /* Further Refinements for Smaller Phones */
+  .auth-logo {
+    width: 180px;
+    margin-bottom: -3rem;
+    margin-top: -3rem;
+  }
+
+  input, textarea {
+    font-size: 0.9rem;
+    border-radius: 50px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    border-radius: 50px;
+    padding: 0.6rem 1rem;
+  }
+
+  .auth p {
+    font-size: 0.85rem;
+  }
+}
   </style>
 </head>
 <body>
