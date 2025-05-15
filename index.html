@@ -9,410 +9,344 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      background-image: url("background.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: thistle;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      font-family: 'Sour Gummy', system-ui;
-    }
+    html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Sour Gummy', system-ui;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    #startPage {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-image: url("background.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      color: thistle;
-      animation: fadeIn 3s ease-out;
-      text-align: center;
-    }
+  body, #startPage {
+    background-image: url("background.png"); /* Ensure this image is in the same directory */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: thistle;
+  }
 
-    .logo {
-      width: 200px;
-      height: auto;
-      animation: logoAnimation 2s ease-out forwards;
-    }
+  #startPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    animation: fadeIn 3s ease-out;
+    text-align: center;
+  }
 
-    .slogan {
-      font-size: 2rem;
-      margin-top: 20px;
-      opacity: 0;
-      animation: sloganAnimation 2s ease-out 1s forwards;
-    }
+  .logo {
+    width: 200px;
+    height: auto;
+    animation: logoAnimation 2s ease-out forwards;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+  .slogan {
+    font-size: 2rem;
+    margin-top: 20px;
+    opacity: 0;
+    animation: sloganAnimation 2s ease-out 1s forwards;
+  }
 
-    @keyframes logoAnimation {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    @keyframes sloganAnimation {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+  @keyframes logoAnimation {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
 
-    @media (max-width: 768px) {
-      .logo {
-        width: 150px;
-      }
-      .slogan {
-        font-size: 1.5rem;
-      }
-    }
+  @keyframes sloganAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: linear-gradient(90deg, #fff8fc, #fff8fc);
-      color: white;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 50px;
-      height: 60px;
-      border-bottom: 2px solid #fff8fc;
-    }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(90deg, #fff8fc, #fff8fc);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    gap: 40px;
+    border-bottom: 2px solid #fff8fc;
+  }
 
+  .container {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .post-creator, .auth, .feed, .friends-list {
+    background: #fff8fc;
+    padding: 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+
+  .post-creator:hover,
+  .auth:hover,
+  .friends-list:hover {
+    transform: scale(1.01);
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.75rem -0.80rem;
+    border: 2px solid #ffe3e3;
+    border-radius: 50px;
+    background-color: #fffafc;
+    font-size: 1rem;
+    color: thistle;
+    font-family: 'Sour Gummy', system-ui;
+    transition: border-color 0.3s ease;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #efb6c8;
+    opacity: 1;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #f7cfd8;
+    outline: none;
+  }
+
+  textarea#postContent {
+    text-align: center;
+  }
+
+  .auth-logo {
+    width: 300px;
+    height: auto;
+    margin: 0 auto -5rem;
+    display: block;
+    object-fit: contain;
+    animation: fadeIn 0.6s ease;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    background-color: #f7cfd8;
+    color: white;
+    font-family: 'Sour Gummy', system-ui;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin: 1rem auto 0;
+    text-align: center;
+  }
+
+  .home-btn, .friends-btn, .logout-btn {
+    margin: 0;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 40px;
+    color: thistle;
+  }
+
+  .upload-btn {
+    display: inline-block;
+    background-color: #fbd6e0;
+    color: #fff9bf;
+    border-radius: 20px;
+    padding: 8px 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-family: 'Sour Gummy', system-ui;
+    font-size: 14px;
+    border: 2px dashed thistle;
+    transition: background-color 0.3s ease;
+  }
+
+  .upload-btn:hover,
+  .home-btn:hover,
+  .friends-btn:hover,
+  .logout-btn:hover {
+    background-color: #ffe6ee;
+    color: #eecad5;
+  }
+
+  #friendsPanel {
+    width: 30%;
+    max-width: 300px;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff8fc;
+    padding: 50px;
+    border-radius: 50px;
+    box-sizing: border-box;
+  }
+
+  #friendsPanel input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    border: 1px solid pink;
+    box-sizing: border-box;
+  }
+
+  .friend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px dashed #ffc0cb;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  a {
+    color: #c6e7ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .delete-btn,
+  .like-btn,
+  .add-friend-btn,
+  .comment-btn {
+    background: none;
+    border: none;
+    color: #efb6c8;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .like-btn:hover,
+  .add-friend-btn:hover,
+  .comment-btn:hover {
+    color: #cb80ab;
+  }
+
+  /* === RESPONSIVE MEDIA QUERIES === */
+
+  @media (max-width: 768px) {
     .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 2rem 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .post-creator {
-      background: #fff;
+      max-width: 95%;
       padding: 1.5rem;
-      border-radius: 50px;
-      margin-top: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
-
-    .auth, .feed, .friends-list {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s ease;
-      text-align: center;
-    }
-
-    input#friend-username {
-      text-align: center; 
-    }
-
-    .post-creator:hover {
-      transform: scale(1.01);
-    }
-
-    .auth:hover, .friends-list:hover {
-      transform: scale(1.01);
     }
 
     .auth-logo {
-      width: 300px;
-      height: auto;
-      margin: 0 auto 1rem;
-      margin-bottom: -5rem;
-      margin-top: -5rem;
-      display: block;
-      object-fit: contain;
-      background: transparent;
-      animation: fadeIn 0.6s ease;
+      width: 220px;
+      margin-top: -3rem;
+    }
+
+    .slogan {
+      font-size: 1.5rem;
+    }
+
+    .logo {
+      width: 150px;
     }
 
     input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.75rem -0.80rem;
-      border: 2px solid #ffe3e3; 
-      border-radius: 50px;
-      background-color: #fffafc;
-      font-size: 1rem;
-      color: thistle;
-      font-family: 'Sour Gummy', system-ui;
-      transition: border-color 0.3s ease;
-    }
-
-    textarea#postContent {
-      text-align: center;
-    }
-
-    input::placeholder, textarea::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #f7cfd8;
-      outline: none;
-    }
-
-    #friendsPanel {
-      width: 30%;
-      max-width: 300px;
-      position: absolute; 
-      top: 200px;       
-      left: 42%;        
-      transform: translateX(-50px);
-      background-color: #fff8fc;
-      padding: 50px;
-      border-radius: 50px;
-      box-sizing: border-box;
-    }
-
-    #friendsPanel input {
-      width: 95%;
-      padding: 10px;
-      margin: 10px 10px 10px 10px;
-      border-radius: 50px;
-      border: 1px solid pink;
-      box-sizing: border-box;
+      padding: 0.7rem;
+      font-size: 0.95rem;
+      margin: 0.7rem -0.6rem;
     }
 
     button {
-      padding: 0.6rem 1.2rem;
-      background-color: #f7cfd8;
-      justify-content: center;
-      color: white;
-      font-family: 'Sour Gummy', system-ui;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: block; 
-      margin: 1rem auto 0; 
-      text-align: center; 
+      font-size: 0.95rem;
+      padding: 0.7rem 1.2rem;
+    }
+
+    nav {
+      gap: 20px;
+      padding: 10px 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      height: auto;
+      padding: 0.8rem 0;
+    }
+
+    nav img {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+
+    .home-btn, .friends-btn, .logout-btn {
+      font-size: 28px;
+    }
+
+    #friendsPanel {
+      position: static;
+      width: 90%;
+      margin: 1rem auto;
+      padding: 1.5rem;
+      transform: none;
+    }
+
+    #friendsPanel input {
+      width: 100%;
+    }
+
+    .slogan {
+      font-size: 1.25rem;
+    }
+
+    .auth-logo {
+      width: 180px;
+      margin-top: -2rem;
+    }
+
+    input, textarea {
+      font-size: 0.9rem;
+      padding: 0.65rem;
+    }
+
+    button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
     }
 
     .auth p {
-      text-align: center;
-    }
-
-    .home-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
+      font-size: 0.85rem;
     }
 
     .upload-btn {
-      display: inline-block;
-      background-color: #fbd6e0;
-      color: #fff9bf;
-      border-radius: 20px;
-      padding: 8px 16px;
-      margin: 10px 0;
-      cursor: pointer;
-      font-family: 'Sour Gummy', system-ui;
-      font-size: 14px;
-      border: 2px dashed thistle;
-      transition: background-color 0.3s ease;
+      font-size: 12px;
+      padding: 6px 12px;
     }
-
-    .upload-btn:hover {
-      background-color: #ffe6ee;
-    }
-
-    .friends-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
-
-    .logout-btn {
-      margin: 0;
-      padding: 10px 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 40px;
-      color: thistle;
-    }
-
-    .auth, .feed, .post-creator, .friends-list {
-      background: #fff8fc;
-    }
-
-    textarea#postContent::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-      text-align: center;
-    }
-
-    textarea#postContent:focus::placeholder {
-      opacity: 0;
-    }
-
-    input#friend-username::placeholder {
-      color: #efb6c8;
-      opacity: 1;
-    }
-
-    input#friend-username:focus::placeholder {
-      opacity: 0;
-      text-align: center;
-    }
-
-    .delete-btn {
-      background: none;
-      border: none;
-      color: #efb6c8;
-      cursor: pointer;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .like-btn, .add-friend-btn, .comment-btn {
-      background: none;
-      border: none;
-      color: #efb6c8;
-      cursor: pointer;
-      margin-right: 5px;
-      font-weight: bold;
-    }
-
-    .like-btn:hover, .add-friend-btn:hover, .comment-btn:hover {
-      color: #cb80ab;
-    }
-
-    .home-btn:hover {
-      color: #eecad5;
-    }
-
-    .friends-btn:hover {
-      color: #eecad5;
-    }
-
-    .logout-btn:hover {
-      color: #eecad5;
-    }
-
-    .friend {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      padding: 0.5rem;
-      border-bottom: 1px dashed #ffc0cb;
-    }
-
-    a {
-      color: #c6e7ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        max-width: 95%; 
-        margin: 2rem auto;
-        padding: 1.5rem;
-      }
-
-      .auth {
-        padding: 1.2rem;
-        border-radius: 18px;
-        margin-bottom: 1.2rem;
-      }
-
-      .auth-logo {
-        width: 250px;
-        margin-top: -4rem;
-      }
-
-      input, textarea {
-        padding: 0.7rem;
-        margin: 0.7rem -0.7rem;
-        border-radius: 50px;
-        font-size: 0.95rem;
-      }
-
-      button {
-        font-size: 0.95rem;
-        border-radius: 50px;
-        padding: 0.7rem 1.2rem;
-      }
-
-      .auth p {
-        font-size: 0.9rem;
-        margin-top: 0.6rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .auth-logo {
-          width: 180px; 
-          margin-bottom: -3rem;
-          margin-top: -3rem;
-        }
-
-        input, textarea {
-          font-size: 0.9rem;
-          border-radius: 50px;
-        } 
-
-        button {
-          font-size: 0.9rem;
-          border-radius: 50px;
-          padding: 0.6rem 1rem;
-        }
-
-        .auth p {
-          font-size: 0.85rem;
-        }
-      }
-
-    @media (max-width: 600px) {
-      #friendsPanel {
-        width: 95%;
-        padding: 15px;
-      }
-
-      #friendsPanel input {
-        width: 100%;
-      }
-    }
+  }
   </style>
 </head>
 <body>
